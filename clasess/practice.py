@@ -285,3 +285,127 @@ user = {
 print(user.get("username"))
 print(user.get("email"))
 print(user.get("phone","Телефон не указан"))
+
+
+
+print()
+
+def check_status(status_code):
+    if status_code == 200 or status_code == 201:
+        print("Тест пройден")
+    else:
+        print("Тест провален")
+
+check_status(200)
+check_status(404)
+check_status(201)
+
+print()
+def is_successful(status_code):
+    if status_code == 200 or status_code == 201:
+        return True
+    else:
+        return False
+
+result1 = is_successful(200)
+result2 = is_successful(404)
+result3 = is_successful(201)
+
+print(result1)
+print(result2)
+print(result3)
+
+
+print()
+def double(number):
+    return number * 2
+result = double(5)
+print(result)
+
+
+print()
+def check_api(status_code, response_time):
+    if (status_code == 200 or status_code == 201) and response_time < 2:
+        return True
+    else:
+        return False
+result1 = check_api(200, 1.5)
+result2 = check_api(201, 2.5)
+result3 = check_api(400, 1.0)
+
+print(result1)
+print(result2)
+print(result3)
+
+
+print()
+
+status_codes = [200, 404, 201, 500, 200]
+
+def is_successful(status_code):
+    if status_code == 200 or status_code == 201:
+        return True
+    else:
+        return False
+
+results = []
+
+for status in status_codes:
+    result = is_successful(status)
+    results.append(result)
+
+print(results)
+
+print()
+
+status_codes = [200, 404, 201, 500, 200]
+def is_successful(status_code):
+    if status_code == 200 or status_code == 201:
+        return True
+    else:
+        return False
+results = []
+passed = 0 
+
+for status in status_codes:
+    result = is_successful(status)
+    results.append(result)
+    if result == True:
+        passed +=1
+print(results)
+print(passed)
+
+print()
+status_codes = [200, 404, 201, 500, 200, 403]
+def is_successful(status_code):
+    if status_code == 200 or status_code == 201:
+        return True
+    else:
+        return False
+    
+passed = 0 
+failed = 0 
+
+for status in status_codes:
+    result = is_successful(status)
+    if result == True:
+        passed +=1
+    else:
+        failed +=1
+print("Passed:", passed)
+print("Failed:", failed)
+
+print()
+status_codes = [200, 404, 201, 500, 200, 403]
+def get_test_results(status_codes):
+    passed = 0 
+    failed = 0 
+    for status in status_codes:
+        result = get_test_results(status)
+        if status == 200 or status == 201:
+            passed += 1 
+        else:
+            failed += 1
+    return passed , failed
+    
+        
