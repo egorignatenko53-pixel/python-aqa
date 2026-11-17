@@ -401,11 +401,252 @@ def get_test_results(status_codes):
     passed = 0 
     failed = 0 
     for status in status_codes:
-        result = get_test_results(status)
         if status == 200 or status == 201:
             passed += 1 
         else:
             failed += 1
     return passed , failed
     
-        
+a,b = get_test_results(status_codes)
+
+print(a)
+print(b)
+
+
+print()
+def is_fast(response_time):
+    if response_time < 2 :
+        return True
+    else:
+        return False
+
+response_times = [1.2, 2.5, 0.8, 3.1, 1.9] 
+fast = 0
+slow = 0 
+for time in response_times:
+    result = is_fast(time)
+    if result:
+        fast += 1
+    else:
+        slow += 1
+
+print("Fast:",fast)
+print("Slow:",slow)
+
+
+print()
+responses = [
+    {"status": 200, "time": 1.2},
+    {"status": 404, "time": 0.5},
+    {"status": 201, "time": 1.8},
+    {"status": 200, "time": 2.5},
+    {"status": 500, "time": 3.0}
+]
+def check_api(status_code, response_time):
+    if (status_code == 200 or status_code == 201) and response_time < 2:
+        return True
+    else:
+        return False
+
+passed = 0 
+failed = 0 
+
+for response in responses:
+    result = check_api(response["status"],response["time"])
+    if result:
+        passed +=1 
+    else:
+        failed += 1
+print("Passed",passed)
+print("Failed:",failed)
+
+
+print()
+responses = [
+    {"status": 200, "time": 1.2},
+    {"status": 404, "time": 0.5},
+    {"status": 201, "time": 1.8},
+    {"status": 200, "time": 2.5},
+    {"status": 500, "time": 3.0}
+]
+def check_api(status_code,response_time):
+    if (status_code == 200 or status_code == 201) and response_time < 2:
+            return True
+    else:
+            return False
+results= []
+for response in responses:
+    result = check_api(response["status"],response["time"])
+    results.append(result)
+
+print(results)
+
+print()
+responses = [
+    {"status": 200, "time": 1.2},
+    {"status": 404, "time": 0.5},
+    {"status": 201, "time": 1.8},
+    {"status": 200, "time": 2.5},
+    {"status": 500, "time": 3.0}
+]
+def check_api(status_code,response_time):
+    if (status_code == 200 or status_code == 201) and response_time <2:
+        return True
+    else:
+        return False
+    
+failed_statuses = []
+
+for fail in responses:
+    result  = check_api(fail["status"],fail["time"])
+    if result == False:
+        failed_statuses.append(fail["status"])
+
+print(failed_statuses)
+
+print()
+responses = [
+    {"status": 200, "time": 1.2},
+    {"status": 404, "time": 0.5},
+    {"status": 201, "time": 1.8},
+    {"status": 200, "time": 2.5},
+    {"status": 500, "time": 3.0}
+]
+def check_api(status_code,response_time):
+    if (status_code == 200 or status_code == 201) and response_time <2:
+        return True
+    else:
+        return False
+
+failed_responses =[]
+
+for fai in responses:
+    result = check_api(fai["status"],fai["time"])
+    if result == False:
+        failed_responses.append(fai)
+
+print(failed_responses)
+
+print()
+responses = [
+    {"status": 200, "time": 1.2},
+    {"status": 404, "time": 0.5},
+    {"status": 201, "time": 1.8},
+    {"status": 200, "time": 2.5},
+    {"status": 500, "time": 3.0}
+]
+def check_api(status_code,response_time):
+    if status_code != 200 and status_code != 201:
+        return "Неверный статус"
+    elif (status_code == 200 or status_code == 201) and response_time >= 2:
+        return "Медленный ответ"
+    else:
+        return "Тест пройден"
+for li in responses:
+    result = check_api(li["status"], li["time"])
+    print(result)
+
+
+print()
+responses = [
+    {"status": 200, "time": 1.2},
+    {"status": 404, "time": 0.5},
+    {"status": 201, "time": 1.8},
+    {"status": 200, "time": 2.5},
+    {"status": 500, "time": 3.0}
+]
+def check_api(status_code,response_time):
+    if status_code != 200 and status_code != 201:
+        return "Неверный статус"
+    elif (status_code == 200 or status_code == 201) and response_time >= 2:
+        return "Медленный ответ"
+    else:
+        return "Тест пройден"
+    
+errors = []
+
+for error in responses:
+    result = check_api(error["status"],error["time"])
+    if result != "Тест пройден":
+        errors.append(result)
+print(errors)
+
+print()
+
+responses = [
+    {"status": 200, "time": 1.2},
+    {"status": 404, "time": 0.5},
+    {"status": 201, "time": 1.8},
+    {"status": 200, "time": 2.5},
+    {"status": 500, "time": 3.0}
+]
+
+def check_api(status_code,response_time):
+    if status_code != 200 and status_code != 201:
+        return "Неверный статус"
+    elif (status_code == 200 or status_code == 201) and response_time >= 2:
+        return "Медленный ответ"
+    else:
+        return "Тест пройден"
+
+status_errors = 0 
+slow_errors = 0
+
+for response in responses:
+    result = check_api(response["status"],response["time"])
+    if result == "Неверный статус":
+        status_errors += 1
+    elif result == "Медленный ответ":
+        slow_errors += 1
+
+print("Status erorrs:", status_errors)
+print("Slow errors:", slow_errors) 
+
+print()
+
+responses = [
+    {"status": 200, "time": 1.2},
+    {"status": 404, "time": 0.5},
+    {"status": 201, "time": 1.8},
+    {"status": 200, "time": 2.5},
+    {"status": 500, "time": 3.0}
+]
+
+def check_api(status_code,response_time):
+    if (status_code == 200 or status_code == 201) and response_time < 2:
+        return True
+    else:
+        return False
+
+passed = 0 
+failed = 0 
+
+for response in responses:
+    result = check_api(response["status"],response["time"])
+    if result == True:
+        passed += 1 
+    else:
+        failed += 1
+
+
+total = passed/len(responses) * 100 
+
+print("Passed:",passed)
+print("Failed:",failed)
+print("Pass rate:",total)
+
+print()
+
+def calculate_pass_rate(passed,total):
+    if total == 0:
+        return 0 
+    else:
+        return passed / total * 100
+
+result1 = calculate_pass_rate(2,5)
+result2 =calculate_pass_rate(5, 5)
+result3 =calculate_pass_rate(0, 0)
+
+print(result1)
+print(result2)
+print(result3)
