@@ -650,3 +650,78 @@ result3 =calculate_pass_rate(0, 0)
 print(result1)
 print(result2)
 print(result3)
+
+print()
+def check_response_time(response_time):
+    if response_time < 2 :
+        return "Быстрый ответ"
+    elif response_time == 2:
+        return "Граничное значение"
+    else:
+        return "Медленный ответ"
+
+result1 = check_response_time(1.9)
+result2 = check_response_time(2.0)
+result3 = check_response_time(2.1)
+result4 = check_response_time(0)
+
+print(result1)
+print(result2)
+print(result3)
+print(result4)
+
+
+print()
+
+responses = [
+    {"status": 200, "time": 1.2},
+    {"status": 201, "time": 1.8},
+    {"status": 404, "time": 0.6},
+    {"status": 200, "time": 2.4},
+    {"status": 500, "time": 3.1},
+    {"status": 200, "time": 0.9}
+]
+
+def check_api(status_code, response_time):
+    if (status_code == 200 or status_code == 201) and response_time < 2:
+        return True
+    else:
+        return False
+
+passed = 0 
+failed = 0 
+
+failed_responses = []
+
+for response in responses:
+    result = check_api(response["status"],response["time"])
+    if result:
+        passed += 1
+    else:
+        failed += 1
+        failed_responses.append(response)
+
+tota = passed / len(responses) * 100 
+
+print("Passed:",passed)
+print("Failed",failed)
+print("Pass rate:",tota)
+print("Failed responses:",failed_responses)
+
+
+print()
+def parse_status(status_code):
+
+    try:
+        number = int(status_code)
+        return number 
+    except ValueError:
+        return "Ошибка преобразования"
+
+result1 = parse_status("200")
+result2 = parse_status("400")
+result3 = parse_status("error")
+
+print(result1)
+print(result2)
+print(result3)
