@@ -725,3 +725,175 @@ result3 = parse_status("error")
 print(result1)
 print(result2)
 print(result3)
+
+
+print()
+
+statuses = ["200", "404", "error", "201", "unknown"]
+def parse_status(status_code):
+    try:
+        number = int(status_code)
+        return number
+    except ValueError:
+        return None
+
+valid_statuses = []
+
+for status in statuses:
+    result = parse_status(status)
+    if result != None:
+        valid_statuses.append(result)
+
+print(valid_statuses)
+
+print()
+def check_age(age):
+    if age >= 18:
+        return "Доступ разрешён"
+    else:
+        return "Доступ запрещён"
+
+user_age = 21 
+second_user = 15
+
+result = check_age(user_age)
+result1 = check_age(second_user)
+print(result)
+print(result1)
+
+
+print()
+
+users = [
+    {"id": 101, "name": "Egor", "age": 21},
+    {"id": 102, "name": "Alex", "age": 16},
+    {"id": 103, "name": "Max", "age": 18},
+    {"id": 104, "name": "Anna"}
+]
+
+def check_access(user):
+    if user.get("age") is None:
+        return "Возраст не указан"
+    elif user.get("age") < 18:
+        return "Доступ запрещён"
+    else:
+        return "Доступ разрешён"
+
+for security in users:
+    result = check_access(security)
+    print(result)
+
+print()
+users = [
+    {"id": 101, "name": "Egor", "email": "egor@test.com"},
+    {"id": 102, "name": "Alex"},
+    {"id": 103, "email": "max@test.com"},
+    {"id": 104, "name": "Anna", "email": "anna@test.com"}
+]
+
+def validate_user(user):
+    if user.get("name") is None:
+        return "Отсутствует имя"
+    elif user.get("name") and user.get("email") is None:
+        return "Отсутствует email"
+    else:
+        return "Данные корректны"
+
+for validate in users:
+    result = validate_user(validate)
+    print(result)
+
+print()
+
+users = [
+    {"name": "Egor", "age": 21},
+    {"name": "Alex", "age": "16"},
+    {"name": "Max"},
+    {"name": "Anna", "age": 18}
+]
+
+def validate_user(user):
+    age = user.get("age")
+    if user.get("age") == None:
+        return "Возраст не указан"
+    elif isinstance(age,int) != True:
+        return "Некорректный тип возраста"
+    else:
+        return "Возраст корректен"
+
+for valid in users:
+    result = validate_user(valid)
+    print(result)
+
+print()
+responses = [
+    {"status": 200},
+    {"status": "404"},
+    {"status": 201},
+    {"status": None},
+    {"status": 500}
+]
+def validate_status(response):
+    status = response.get("status")
+    if response.get("status") is None:
+        return "Статус отсутствует"
+    elif isinstance(status,int) != True:
+        return "Некорректный тип статуса"
+    elif (response.get("status") == 201 or response.get("status") == 200) and isinstance(status,int):
+        return "Успешный статус"
+    else:
+        return "Ошибка HTTP"
+
+for stat in responses:
+    result = validate_status(stat)
+    print(result)
+
+print()
+users = [
+    {"name": "Egor", "age": 21},
+    {"name": "Alex", "age": "16"},
+    {"name": 123, "age": 25},
+    {"name": "Anna", "age": 18},
+    {"name": "Max"}
+]
+def validate_user(user):
+    age = user.get("age")
+    name = user.get("name")
+    if name == None:
+        return "Имя отсутствует"
+    elif age == None:
+        return "Возраст отсутствует"
+    elif isinstance(name,str) != True:
+        return "Некорректный тип имени"
+    elif isinstance(age,int) != True:
+        return "Некорректный тип возраста"
+    else:
+        return "Данные корректны"
+
+for user in users:
+    result = validate_user(user)
+    print(result)
+
+print()
+users = [
+    {"name": "Egor", "age": 21},
+    {"name": "Alex", "age": -5},
+    {"name": "Max", "age": 150},
+    {"name": "Anna", "age": 0},
+    {"name": "Ivan", "age": "25"},
+    {"name": "Olga"}
+]
+def validate_age(user):
+    age = user.get("age")
+    if age is None:
+        return "Возраст отсутствует"
+    elif isinstance(age,int) != True:
+        return "Некорректный тип"
+    elif age < 0 or age > 120:
+        return "Недопустимый возраст"
+    else:
+        return "Возраст корректен"
+
+for ag in users:
+    result = validate_age(ag)
+    print(result)
